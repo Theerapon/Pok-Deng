@@ -25,7 +25,7 @@ const putOnBet = () => {
 const displayPlayerCard = (player) => {
     console.log("You got " +  
     comareCard(player.cards[0].face, player.cards[0].symbol) + " " +
-    comareCard(player.cards[1].face, player.cards[1].symbol))
+    comareCard(player.cards[1].face, player.cards[1].symbol) + " ")
 }
 
 const displayDealerCard = (dealer) => {
@@ -88,40 +88,45 @@ const dealOutCards = () => {
     player.cards.push( {
         face: outCardsFace[0],
         symbol: outCardsSymbol[0],
-        value: 0
+        value: checkScore(outCardsFace[0])
     })
 
     player.cards.push( {
         face: outCardsFace[2],
         symbol: outCardsSymbol[2],
-        value: 0
+        value: checkScore(outCardsFace[2])
     })
 
     dealer.cards.push( {
         face: outCardsFace[1],
         symbol: outCardsSymbol[1],
-        value: 0
+        value: checkScore(outCardsFace[1])
     })
 
     dealer.cards.push( {
         face: outCardsFace[3],
         symbol: outCardsSymbol[3],
-        value: 0
+        value: checkScore(outCardsFace[3])
     })
 
     displayPlayerCard(player)
     displayDealerCard(dealer)
+
+    checkScore()
     
 }
 
-const checkScore = () => {
-
+const checkScore = (face) => {
+    var score = 0
+    if (face === 'A') {
+        score = 1;
+    } else if (face === 'Clubs' || face === 'Diamonds' || face === 'Hearts' || face === 'Spades') {
+        score = 10;
+    } else {
+        score = parseInt(face);
+    }
+    return score;
 }
 
 putOnBet()
 
-// while(true) {
-
-
-
-// }
