@@ -178,6 +178,9 @@ const compareScore = (player, dealer, currentBet) => {
 
 const playGame = () => {
 
+    player.cards = []
+    dealer.cards = []
+
     putOnBet().then(() => {
         dealOutCards()
         compareScore(player, dealer, currentBet)
